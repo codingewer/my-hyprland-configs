@@ -1,0 +1,145 @@
+{
+	"layer": "top",
+	"modules-left": [
+		"custom/launcher",
+		"cpu",
+		"temperature",
+		"memory",
+		"custom/gpu-usage",
+		"network"
+	],
+	"modules-center": [
+		"hyprland/workspaces",
+	],
+	"modules-right": [
+		"tray",
+		"backlight",
+		"pulseaudio",
+		"clock",
+		"battery",
+		"custom/power"
+	],
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"active": "",
+			"default": ""
+		},
+		"on-scroll-up": "hyprctl dispatch workspace e+1",
+		"on-scroll-down": "hyprctl dispatch workspace e-1"
+	},
+"hyprland/window": {  
+//"format": "{}"   // <--- these is the default value  
+"format": "<span font='9' rise='-4444'>{}</span>"  
+},
+	"network": {
+		"format": "{ifname}",
+		"format-wifi": "{essid}  ({signalStrength}%)   {bandwidthDownBits}   {bandwidthUpBits} ",
+		"format-ethernet": "{ifname}     {bandwidthDownBits:>}  {bandwidthUpBits:>}  ",
+		"format-disconnected": "",
+		"format-disconnected": "",
+		"tooltip-format": "{ifname}",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+		"tooltip-format-ethernet": "{ifname} ",
+		"tooltip-format-disconnected": "Disconnected",
+		"max-length": 50,
+		"exec": "$HOME/.config/waybar/scripts/bandWith.sh enp2s0 &",
+		"exec": "$HOME/.config/waybar/scripts/bandWith.sh wlo1"
+	},
+	"backlight": {
+		"format": "{percent}% {icon}",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 20
+		},
+		"format": "{icon}  {capacity}%",
+		"format-charging": "    {capacity}%",
+		"format-plugged": "    {capacity}%",
+		"format-alt": "{time} {icon}",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"tray": {
+		"icon-size": 18,
+		"spacing": 10
+	},
+	"clock": {
+		"format": "{:%H:%M}  ",
+		"format-alt": "{:%A, %B %d, %Y (%R)} 󰨲 ",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			},
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		},
+	},
+	"cpu": {
+		"interval": 15,
+		"format": "  {}%",
+		"max-length": 10
+	},
+	"temperature": {
+		// "thermal-zone": 2,
+		// "hwmon-path": ["/sys/class/hwmon/hwmon2/temp1_input", "/sys/class/thermal/thermal_zone0/temp"],
+		// "critical-threshold": 80,
+		// "format-critical": "{temperatureC}°C ",
+		"format": "{temperatureC}°C ",
+		"on-click": "kitty htop"
+	},
+	"memory": {
+		"interval": 30,
+		"format": "   {}%",
+		"max-length": 10
+	},
+	"custom/launcher": {
+		"format": "",
+		"on-click": "fuzzel --show drun",
+		"on-click-right": "killall fuzzel"
+	},
+	"custom/power": {
+		"format": "",
+		"on-click": "nwg-bar -g Orchis-Grey-Dark"
+	},
+	"custom/aibot": {
+		"format": "    ",
+		"on-click": "bash /home/codingewer/minimal-llm-ui/aibot.sh"
+	},
+	"custom/gpu-usage": {
+		"format": "{} {icon}",
+		"exec": "/home/codingewer/.cargo/bin/gpu-usage-waybar",
+		"return-type": "json",
+		"format-icons": "󰾲",
+		"on-click": "kitty nvtop"
+	}
+}

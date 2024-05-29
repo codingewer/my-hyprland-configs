@@ -1,0 +1,131 @@
+* {
+  border: none;
+  border-radius: 0;
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: Liberation Mono;
+  min-height: 1px;
+  font-weight:500;
+  font-size:14px;
+
+}
+
+window#waybar {
+  background: transparent;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#workspaces {
+  margin-right: 8px;
+  border-radius: 10px;
+  transition: none;
+  background: #161925;
+    margin-top:5px;
+}
+
+#workspaces button {
+  transition: 0.5s ease-in;
+  color: #BFCFE7;
+  background: transparent;
+  padding: 5px;
+  font-size: 18px;
+}
+
+#workspaces button.persistent {
+  color: #7c818c;
+  font-size: 12px;
+}
+
+
+#workspaces button:hover {
+  transition: 0.5s ease-out;
+  color: #3CF2B0;
+  background: transparent;
+}
+
+#workspaces button.active {
+  transition: 0.5s ease-out;
+
+    color: #EB475A;
+}
+
+
+#pulseaudio.muted {
+  background-color: #90b1b1;
+  color: #2a5c45;
+}
+
+
+#temperature.critical {
+  background-color: #eb4d4b;
+}
+
+
+#battery, #custom-gpu-usage , #tray,#backlight , #temperature , #cpu,
+#memory,
+#network, #pulseaudio, #clock,
+#custom-power,
+#custom-launcher {
+  margin-right: 16px;
+  transition: none;
+  padding-left:5px;
+  padding-right:5px;
+  border-left:solid 2px;
+}
+
+.modules-left{
+margin-left: 8px;
+    margin-top:5px;
+  color: #F02A4B;
+  margin-right: 8px;
+  transition: none;
+  background: #161925;
+    padding:12px;
+        border-radius: 10px;
+
+}
+
+.modules-right {
+margin-right: 8px;
+    border-radius: 10px;
+  transition: none;
+    margin-top:5px;
+      background: #161925;
+  color:#3CF2B0;
+  padding:12px;
+}
+
+
+#custom-launcher {
+  margin-left: 8px;
+}
+
+#battery.charging {
+  color: #ffffff;
+  background-color: #5C8374;
+}
+
+#battery.warning:not(.charging) {
+  background-color: #ffbe61;
+  color: black;
+}
+
+#battery.critical:not(.charging) {
+  background: #26a65b;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
